@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>calc microcontroller power usage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .tabs {
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            background-color: #f1f1f1;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .tab-button:hover {
+            background-color: #ddd;
+        }
+
+        .tab-button.active {
+            background-color: #ccc;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 5px 5px 5px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .form-input[type="number"] {
+            width: 80px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #888;
+        }
+        
+        .form-submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .form-submit:hover {
+            background-color: #45a049;
+        }
+        
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        
+        function calculateMicrocontroller() {
+            var work_mAh = parseFloat(document.getElementById("work_mAh").value);
+            var sleep_mAh = parseFloat(document.getElementById("sleep_mAh").value);
+            var work_time = parseFloat(document.getElementById("work_time").value);
+            var interval = parseFloat(document.getElementById("interval").value);
+            var capacity = parseFloat(document.getElementById("capacity").value);
+            
+
+            var sleep_time = interval - work_time;
+            var work_mAh_per_day = (86400/interval)*work_time*(work_mAh/3600);
+            var sleep_mAh_per_day = (86400/interval)*sleep_time*(sleep_mAh/3600);
+            var sum_mAh_per_day = work_mAh_per_day + sleep_mAh_per_day;
+            var daysRunning = capacity / sum_mAh_per_day;
+            
+            document.getElementById("microcontroller-result").innerHTML = "work mAh per Day: " + work_mAh_per_day.toFixed(2);
+            document.getElementById("microcontroller-result").innerHTML += "<br>deep sleep mAh per Day: " + sleep_mAh_per_day.toFixed(2);
+            document.getElementById("microcontroller-result").innerHTML += "<br>sum mAh per Day: " + sum_mAh_per_day.toFixed(2);
+            document.getElementById("microcontroller-result").innerHTML += "<br>Days Running: " + daysRunning.toFixed(2);
+        }
+        
+        function calculateSolarModule() {
+            var middleHours = parseFloat(document.getElementById("middleHours").value);
+            var maxHours = parseFloat(document.getElementById("maxHours").value);
+            var mAh = parseFloat(document.getElementById("mAh").value);
+            
+            var mAhPerDayMiddle = (middleHours * mAh);
+            var mAhPerDayMax = (maxHours * mAh);
+            
+            document.getElementById("solar-module-result").innerHTML = "mAh per Day (Middle): " + mAhPerDayMiddle.toFixed(0);
+            document.getElementById("solar-module-result").innerHTML += "<br>mAh per Day (Max): " + mAhPerDayMax.toFixed(0);
+        }
+    </script>
+</head>
+<body>
+    <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'tab1')">Microcontroller</button>
+        <button class="tab-button" onclick="openTab(event, 'tab2')">Solar Module</button>
+    </div>
+
+    <div id="tab1" class="tab-content" style="display: block;">
+        <h2>Microcontroller</h2>
+        <form onsubmit="event.preventDefault(); calculateMicrocontroller();">
+
+            <label class="form-label" for="work_mAh">Work mAh:</label>
+            <input class="form-input" type="number" step="0.1" id="work_mAh" name="work_mAh" value="74">
+
+            <label class="form-label" for="sleep_mAh">Deep sleep mAh:</label>
+            <input class="form-input" type="number" step="0.01" id="sleep_mAh" name="sleep_mAh" value="0.04">
+
+            <label class="form-label" for="work_time">Working time in sec:</label>
+            <input class="form-input" type="number" id="work_time" name="work_time" value="10">
+            
+            <label class="form-label" for="interval">Interval in sec:</label>
+            <input class="form-input" type="number" id="interval" name="interval" value="3600">
+            
+            <label class="form-label" for="capacity">Accu Capacity:</label>
+            <input class="form-input" type="number" id="capacity" name="capacity" value="500">
+            
+            <button class="form-submit" type="submit">Submit</button>
+        </form>
+        
+        <div class="result" id="microcontroller-result"></div>
+    </div>
+
+    <div id="tab2" class="tab-content">
+        <h2>Solar Module</h2>
+        <form onsubmit="event.preventDefault(); calculateSolarModule();">
+            <label class="form-label" for="middleHours">Middle Sun Hours:</label>
+            <input class="form-input" type="number" step="0.1" id="middleHours" name="middleHours" value="4.8">
+            
+            <label class="form-label" for="maxHours">Max Sun Hours:</label>
+            <input class="form-input" type="number" step="0.1" id="maxHours" name="maxHours" value="8">
+            
+            <label class="form-label" for="voltage">Voltage:</label>
+            <input class="form-input" type="number" id="voltage" name="voltage" value="6">
+
+            <label class="form-label" for="mAh">mAh</label>
+            <input class="form-input" type="number" id="mAh" name="mAh" value="160">
+            
+            <button class="form-submit" type="submit">Submit</button>
+        </form>
+        
+        <div class="result" id="solar-module-result"></div>
+    </div>
+</body>
+</html>
