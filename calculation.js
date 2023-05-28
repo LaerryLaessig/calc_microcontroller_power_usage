@@ -1,3 +1,32 @@
+class TableBuilder {
+    constructor() {
+      this.table = "<table>";
+    }
+  
+    addHeader(header) {
+      this.table += "<tr>";
+      header.forEach((cell) => {
+        this.table += "<th>" + cell + "</th>";
+      });
+      this.table += "</tr>";
+      return this;
+    }
+  
+    addRow(row) {
+      this.table += "<tr>";
+      row.forEach((cell) => {
+        this.table += "<td>" + cell.toFixed(2) + "</td>";
+      });
+      this.table += "</tr>";
+      return this;
+    }
+  
+    build() {
+      this.table += "</table>";
+      return this.table;
+    }
+  }
+
 function calculateMicrocontroller() {
     var work_mAh = parseFloat(document.getElementById("work_mAh").value);
     var sleep_mAh = parseFloat(document.getElementById("sleep_mAh").value);
@@ -12,18 +41,12 @@ function calculateMicrocontroller() {
     var sum_mAh_per_day = work_mAh_per_day + sleep_mAh_per_day;
     var watt_hour = (3.7 * sum_mAh_per_day)/1000;
     var daysRunning = capacity / sum_mAh_per_day;
-    
-    var table = "<table>";
-    table += "<tr><th>work mAh per day</th><th>deep sleep mAh per day</th><th>sum mAh per day</th><th>Wh a day</th><th>days running</th></tr>";
-    table += "<tr>"
-    table += "<td>" + work_mAh_per_day.toFixed(2) + "</td>";
-    table += "<td>" + sleep_mAh_per_day.toFixed(2) + "</td>";
-    table += "<td>" + sum_mAh_per_day.toFixed(2) + "</td>";
-    table += "<td>" + watt_hour.toFixed(2) + "</td>";
-    table += "<td>" + daysRunning.toFixed(2) + "</td>";
-    table += "</tr></table>";
 
-    document.getElementById("microcontroller-result").innerHTML = table;
+    var table = new TableBuilder();
+    table.addHeader(["work mAh per day", "deep sleep mAh per day", "sum mAh per day", "Wh a day", "days running"])
+    table.addRow([work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning])
+
+    document.getElementById("microcontroller-result").innerHTML = table.build();
 }
 
 function calculateSolarModule() {
@@ -36,16 +59,10 @@ function calculateSolarModule() {
     var watt_hour_day_middle = (voltage * mAhPerDayMiddle)/1000;
     var mAhPerDayMax = (maxHours * mAh);
     var watt_hour_day_max = (voltage * mAhPerDayMax)/1000;
-    
 
-    var table = "<table>";
-    table += "<tr><th>mAh per day(middle)</th><th>Wh(middle)</th><th>mAh per day(max)</th><th>Wh(max)</th></tr>";
-    table += "<tr>"
-    table += "<td>" + mAhPerDayMiddle.toFixed(2) + "</td>";
-    table += "<td>" + watt_hour_day_middle.toFixed(2) + "</td>";
-    table += "<td>" + mAhPerDayMax.toFixed(2) + "</td>";
-    table += "<td>" + watt_hour_day_max.toFixed(2) + "</td>";
-    table += "</tr></table>";
+    var table = new TableBuilder();
+    table.addHeader(["mAh per day(middle)", "Wh(middle)", "mAh per day(max)", "Wh(max)"]);
+    table.addRow([mAhPerDayMiddle, watt_hour_day_middle, mAhPerDayMax, watt_hour_day_max])
 
-    document.getElementById("solar-module-result").innerHTML = table;
+    document.getElementById("solar-module-result").innerHTML = table.build();
 }
