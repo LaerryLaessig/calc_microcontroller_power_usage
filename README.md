@@ -43,5 +43,5 @@ Contributions are welcome! If you find any issues or want to add new features, p
 laerrylaessig
 
 
-## Exanmple
+## Example
 https://laerrylaessig.github.io/calc_microcontroller_power_usage/
