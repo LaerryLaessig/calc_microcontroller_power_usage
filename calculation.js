@@ -17,7 +17,12 @@ class Solarmodule_Result {
     }
 }
 
+const sec_a_day = 86400;
+const sec_a_hour = 3600;
+
 function calculateMicrocontroller() {
+    const microcontroller_voltage = 3.7;
+
     var work_mAh = parseFloat(document.getElementById("work_mAh").value);
     var sleep_mAh = parseFloat(document.getElementById("sleep_mAh").value);
     var work_time = parseFloat(document.getElementById("work_time").value);
@@ -26,10 +31,10 @@ function calculateMicrocontroller() {
     
 
     var sleep_time = interval - work_time;
-    var work_mAh_per_day = (86400/interval)*work_time*(work_mAh/3600);
-    var sleep_mAh_per_day = (86400/interval)*sleep_time*(sleep_mAh/3600);
+    var work_mAh_per_day = (sec_a_day/interval)*work_time*(work_mAh/sec_a_hour);
+    var sleep_mAh_per_day = (sec_a_day/interval)*sleep_time*(sleep_mAh/sec_a_hour);
     var sum_mAh_per_day = work_mAh_per_day + sleep_mAh_per_day;
-    var watt_hour = (3.7 * sum_mAh_per_day)/1000;
+    var watt_hour = (microcontroller_voltage * sum_mAh_per_day)/1000;
     var daysRunning = capacity / sum_mAh_per_day;
 
     return new Microcontroller_Result(work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning);
