@@ -1,4 +1,4 @@
-class Microcontroller_result {
+class Microcontroller_Result {
     constructor(work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning) {
         this.work_mAh_per_day = work_mAh_per_day;
         this.sleep_mAh_per_day = sleep_mAh_per_day;
