@@ -21,4 +21,31 @@ class TabController {
     }
   }
 
+  class TableBuilder {
+    constructor() {
+      this.table = "<table>";
+    }
   
+    addHeader(header) {
+      this.table += "<tr>";
+      header.forEach((cell) => {
+        this.table += "<th>" + cell + "</th>";
+      });
+      this.table += "</tr>";
+      return this;
+    }
+  
+    addRow(row) {
+      this.table += "<tr>";
+      row.forEach((cell) => {
+        this.table += "<td>" + cell.toFixed(2) + "</td>";
+      });
+      this.table += "</tr>";
+      return this;
+    }
+  
+    build() {
+      this.table += "</table>";
+      return this.table;
+    }
+  }
