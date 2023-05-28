@@ -32,7 +32,7 @@ function calculateMicrocontroller() {
     var watt_hour = (3.7 * sum_mAh_per_day)/1000;
     var daysRunning = capacity / sum_mAh_per_day;
 
-    return new Microcontroller_result(work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning);
+    return new Microcontroller_Result(work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning);
 }
 
 function calculateSolarModule() {
