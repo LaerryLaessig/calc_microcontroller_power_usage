@@ -8,61 +8,61 @@
     <script src="calculation.js"></script>
     <script src="site_interaction.js"></script> 
 </head>
-<body>
-    <div class="header">
-        <h1>Calc microcontroller power usage</h1>
-    </div>
+    <body>
+        <div class="header">
+            <h1>Calc microcontroller power usage</h1>
+        </div>
 
-    <div class="tabs">
-        <button id="tab-microcontroller-button" class="tab-button active">Microcontroller</button>
-        <button id="tab-solarmodule-button" class="tab-button">Solar Module</button>
-    </div>
+        <div class="tabs">
+            <button id="tab-microcontroller-button" class="tab-button active">Microcontroller</button>
+            <button id="tab-solarmodule-button" class="tab-button">Solar Module</button>
+        </div>
 
-    <div id="tab-microcontroller-content" class="tab-content" style="display: block;">
-        <h2>Microcontroller</h2>
-        <form onsubmit="event.preventDefault(); genereate_microcontroller_result_table();">
+        <div id="tab-microcontroller-content" class="tab-content" style="display: block;">
+            <h2>Microcontroller</h2>
+            <form onsubmit="event.preventDefault(); genereate_microcontroller_result_table();">
 
-            <label class="form-label" for="work_mAh">Work mAh:</label>
-            <input class="form-input" type="number" step="0.1" id="work_mAh" name="work_mAh" value="74">
+                <label class="form-label" for="work_mAh">Work mAh:</label>
+                <input class="form-input" type="number" step="0.1" id="work_mAh" name="work_mAh" value="74">
 
-            <label class="form-label" for="sleep_mAh">Deep sleep mAh:</label>
-            <input class="form-input" type="number" step="0.01" id="sleep_mAh" name="sleep_mAh" value="0.04">
+                <label class="form-label" for="sleep_mAh">Deep sleep mAh:</label>
+                <input class="form-input" type="number" step="0.01" id="sleep_mAh" name="sleep_mAh" value="0.04">
 
-            <label class="form-label" for="work_time">Working time in sec:</label>
-            <input class="form-input" type="number" id="work_time" name="work_time" value="10">
+                <label class="form-label" for="work_time">Working time in sec:</label>
+                <input class="form-input" type="number" id="work_time" name="work_time" value="10">
+                
+                <label class="form-label" for="interval">Interval in sec:</label>
+                <input class="form-input" type="number" id="interval" name="interval" value="3600">
+                
+                <label class="form-label" for="capacity">Accu capacity in mAh:</label>
+                <input class="form-input" type="number" id="capacity" name="capacity" value="500">
+                
+                <button class="form-submit" type="submit">Submit</button>
+            </form>
             
-            <label class="form-label" for="interval">Interval in sec:</label>
-            <input class="form-input" type="number" id="interval" name="interval" value="3600">
-            
-            <label class="form-label" for="capacity">Accu capacity in mAh:</label>
-            <input class="form-input" type="number" id="capacity" name="capacity" value="500">
-            
-            <button class="form-submit" type="submit">Submit</button>
-        </form>
-        
-        <div class="result" id="microcontroller-result"></div>
-    </div>
+            <div class="result" id="microcontroller-result"></div>
+        </div>
 
-    <div id="tab-solarmodule-content" class="tab-content">
-        <h2>Solar Module</h2>
-        <form onsubmit="event.preventDefault(); genereate_solarmodule_result_table();">
-            <label class="form-label" for="middleHours">Middle sun hours:</label>
-            <input class="form-input" type="number" step="0.1" id="middleHours" name="middleHours" value="4.8">
-            
-            <label class="form-label" for="maxHours">Max sun hours:</label>
-            <input class="form-input" type="number" step="0.1" id="maxHours" name="maxHours" value="8">
-            
-            <label class="form-label" for="voltage">Voltage:</label>
-            <input class="form-input" type="number" step="0.1" id="voltage" name="voltage" value="6">
+        <div id="tab-solarmodule-content" class="tab-content">
+            <h2>Solar Module</h2>
+            <form onsubmit="event.preventDefault(); genereate_solarmodule_result_table();">
+                <label class="form-label" for="middleHours">Middle sun hours:</label>
+                <input class="form-input" type="number" step="0.1" id="middleHours" name="middleHours" value="4.8">
+                
+                <label class="form-label" for="maxHours">Max sun hours:</label>
+                <input class="form-input" type="number" step="0.1" id="maxHours" name="maxHours" value="8">
+                
+                <label class="form-label" for="voltage">Voltage:</label>
+                <input class="form-input" type="number" step="0.1" id="voltage" name="voltage" value="6">
 
-            <label class="form-label" for="mAh">mAh</label>
-            <input class="form-input" type="number" id="mAh" name="mAh" value="160">
+                <label class="form-label" for="mAh">mAh</label>
+                <input class="form-input" type="number" id="mAh" name="mAh" value="160">
+                
+                <button class="form-submit" type="submit">Submit</button>
+            </form>
             
-            <button class="form-submit" type="submit">Submit</button>
-        </form>
-        
-        <div class="result" id="solar-module-result"></div>
-    </div>
-    <script src="tab_registration.js"></script>
-</body>
+            <div class="result" id="solar-module-result"></div>
+        </div>
+        <script src="tab_registration.js"></script>
+    </body>
 </html>

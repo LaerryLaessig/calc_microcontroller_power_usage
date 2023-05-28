@@ -52,7 +52,13 @@ class Tab_Controller {
 
   function genereate_microcontroller_result_table() {
 
-    var result = calculate_microcontroller();
+    var work_mAh = parseFloat(document.getElementById("work_mAh").value);
+    var sleep_mAh = parseFloat(document.getElementById("sleep_mAh").value);
+    var work_time = parseFloat(document.getElementById("work_time").value);
+    var interval = parseFloat(document.getElementById("interval").value);
+    var capacity = parseFloat(document.getElementById("capacity").value);
+
+    var result = calculate_microcontroller(work_mAh, sleep_mAh, work_time, interval, capacity);
 
     var table = new Table_Builder();
     table.addHeader(["work mAh per day", "deep sleep mAh per day", "sum mAh per day", "Wh a day", "days running"])
@@ -63,7 +69,12 @@ class Tab_Controller {
 
   function genereate_solarmodule_result_table() {
 
-    var result = calculate_solarmodule();
+    var middleHours = parseFloat(document.getElementById("middleHours").value);
+    var maxHours = parseFloat(document.getElementById("maxHours").value);
+    var capacity_mAh = parseFloat(document.getElementById("mAh").value);
+    var voltage = parseFloat(document.getElementById("voltage").value);
+
+    var result = calculate_solarmodule(middleHours, maxHours, capacity_mAh, voltage);
 
     var table = new Table_Builder();
     table.addHeader(["mAh per day(middle)", "Wh per day(middle)", "mAh per day(max)", "Wh per day(max)"]);

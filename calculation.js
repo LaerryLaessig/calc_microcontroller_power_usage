@@ -20,16 +20,9 @@ class Solarmodule_Result {
 const sec_a_day = 86400;
 const sec_a_hour = 3600;
 
-function calculate_microcontroller() {
+function calculate_microcontroller(work_mAh, sleep_mAh, work_time, interval, capacity) {
     const microcontroller_voltage = 3.7;
-
-    var work_mAh = parseFloat(document.getElementById("work_mAh").value);
-    var sleep_mAh = parseFloat(document.getElementById("sleep_mAh").value);
-    var work_time = parseFloat(document.getElementById("work_time").value);
-    var interval = parseFloat(document.getElementById("interval").value);
-    var capacity = parseFloat(document.getElementById("capacity").value);
     
-
     var sleep_time = interval - work_time;
     var work_mAh_per_day = (sec_a_day/interval)*work_time*(work_mAh/sec_a_hour);
     var sleep_mAh_per_day = (sec_a_day/interval)*sleep_time*(sleep_mAh/sec_a_hour);
@@ -41,15 +34,11 @@ function calculate_microcontroller() {
 }
 
 
-function calculate_solarmodule() {
-    var middleHours = parseFloat(document.getElementById("middleHours").value);
-    var maxHours = parseFloat(document.getElementById("maxHours").value);
-    var mAh = parseFloat(document.getElementById("mAh").value);
-    var voltage = parseFloat(document.getElementById("voltage").value);
+function calculate_solarmodule(middleHours, maxHours, capacity_mAh, voltage) {
     
-    var mAhPerDayMiddle = (middleHours * mAh);
+    var mAhPerDayMiddle = (middleHours * capacity_mAh);
     var watt_hour_day_middle = (voltage * mAhPerDayMiddle)/1000;
-    var mAhPerDayMax = (maxHours * mAh);
+    var mAhPerDayMax = (maxHours * capacity_mAh);
     var watt_hour_day_max = (voltage * mAhPerDayMax)/1000;
 
     return new Solarmodule_Result(mAhPerDayMiddle, watt_hour_day_middle, mAhPerDayMax, watt_hour_day_max);
