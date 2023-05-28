@@ -82,3 +82,4 @@ class Tab_Controller {
 
     document.getElementById("solar-module-result").innerHTML = table.build();
   }
+ 

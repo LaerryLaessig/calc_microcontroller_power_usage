@@ -18,11 +18,10 @@
             <button id="tab-microcontroller-button" class="tab-button active">Microcontroller</button>
             <button id="tab-solarmodule-button" class="tab-button">Solar Module</button>
         </div>
-
         <div id="tab-microcontroller-content" class="tab-content" style="display: block;">
             <h2>Microcontroller</h2>
+            <button id="microcontroller-select-button" class="select-button">Preselection Microcontroller</button>
             <form onsubmit="event.preventDefault(); genereate_microcontroller_result_table();">
-
                 <label class="form-label" for="work_mAh">Work mAh:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This is the power consumption of the microcontroller during active work in milliampere-hours (mAh).</span>
@@ -91,6 +90,27 @@
             
             <div class="result" id="solar-module-result"></div>
         </div>
+        <div id="microcontroller-modal" class="modal">
+            <div class="modal-content">
+                <h2>Select Microcontroller</h2>
+                <form id="microcontroller-form">
+                <label for="microcontroller-select">Microcontroller:</label>
+                <select id="microcontroller-select">
+                    <option value="Arduino Uno">Arduino Uno</option>
+                    <option value="Raspi Zero">Raspi Zero</option>
+                    <option value="ESP8266">ESP8266</option>
+                    <option value="ESP32">ESP32</option>
+                    <option value="STM32F103C8">STM32F103C8</option>
+                    <option value="Atmega328P">Atmega328P</option>
+                </select>
+                <div class="modal-buttons">
+                    <button id="select-button" class="modal-button">Select</button>
+                    <button id="cancel-button" class="modal-button">Cancel</button>
+                </div>
+                </form>
+            </div>
+            </div>
         <script src="tab_registration.js"></script>
+        <script src="modal_interaction.js"></script>
     </body>
 </html>
