@@ -1,3 +1,22 @@
+class Microcontroller_result {
+    constructor(work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning) {
+        this.work_mAh_per_day = work_mAh_per_day;
+        this.sleep_mAh_per_day = sleep_mAh_per_day;
+        this.sum_mAh_per_day = sum_mAh_per_day;
+        this.watt_hour = watt_hour;
+        this.daysRunning = daysRunning;
+    }
+}
+
+class Solarmodule_Result {
+    constructor(mAhPerDayMiddle, watt_hour_day_middle, mAhPerDayMax, watt_hour_day_max) {
+        this.mAhPerDayMiddle = mAhPerDayMiddle;
+        this.watt_hour_day_middle = watt_hour_day_middle;
+        this.mAhPerDayMax = mAhPerDayMax;
+        this.watt_hour_day_max = watt_hour_day_max;
+    }
+}
+
 function calculateMicrocontroller() {
     var work_mAh = parseFloat(document.getElementById("work_mAh").value);
     var sleep_mAh = parseFloat(document.getElementById("sleep_mAh").value);
@@ -13,11 +32,7 @@ function calculateMicrocontroller() {
     var watt_hour = (3.7 * sum_mAh_per_day)/1000;
     var daysRunning = capacity / sum_mAh_per_day;
 
-    var table = new TableBuilder();
-    table.addHeader(["work mAh per day", "deep sleep mAh per day", "sum mAh per day", "Wh a day", "days running"])
-    table.addRow([work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning])
-
-    document.getElementById("microcontroller-result").innerHTML = table.build();
+    return new Microcontroller_result(work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning);
 }
 
 function calculateSolarModule() {
@@ -31,9 +46,5 @@ function calculateSolarModule() {
     var mAhPerDayMax = (maxHours * mAh);
     var watt_hour_day_max = (voltage * mAhPerDayMax)/1000;
 
-    var table = new TableBuilder();
-    table.addHeader(["mAh per day(middle)", "Wh(middle)", "mAh per day(max)", "Wh(max)"]);
-    table.addRow([mAhPerDayMiddle, watt_hour_day_middle, mAhPerDayMax, watt_hour_day_max])
-
-    document.getElementById("solar-module-result").innerHTML = table.build();
+    return new Solarmodule_Result(mAhPerDayMiddle, watt_hour_day_middle, mAhPerDayMax, watt_hour_day_max);
 }

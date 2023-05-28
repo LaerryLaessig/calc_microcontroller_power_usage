@@ -49,3 +49,25 @@ class TabController {
       return this.table;
     }
   }
+
+  function genereate_microcontroller_result_table() {
+
+    var result = calculateMicrocontroller();
+
+    var table = new TableBuilder();
+    table.addHeader(["work mAh per day", "deep sleep mAh per day", "sum mAh per day", "Wh a day", "days running"])
+    table.addRow([result.work_mAh_per_day, result.sleep_mAh_per_day, result.sum_mAh_per_day, result.watt_hour, result.daysRunning])
+
+    document.getElementById("microcontroller-result").innerHTML = table.build();
+  }
+
+  function genereate_solarmodule_result_table() {
+
+    var result = calculateSolarModule();
+
+    var table = new TableBuilder();
+    table.addHeader(["mAh per day(middle)", "Wh(middle)", "mAh per day(max)", "Wh(max)"]);
+    table.addRow([result.mAhPerDayMiddle, result.watt_hour_day_middle, result.mAhPerDayMax, result.watt_hour_day_max])
+
+    document.getElementById("solar-module-result").innerHTML = table.build();
+  }

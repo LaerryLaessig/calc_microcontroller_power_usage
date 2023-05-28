@@ -20,7 +20,7 @@
 
     <div id="tab-microcontroller-content" class="tab-content" style="display: block;">
         <h2>Microcontroller</h2>
-        <form onsubmit="event.preventDefault(); calculateMicrocontroller();">
+        <form onsubmit="event.preventDefault(); genereate_microcontroller_result_table();">
 
             <label class="form-label" for="work_mAh">Work mAh:</label>
             <input class="form-input" type="number" step="0.1" id="work_mAh" name="work_mAh" value="74">
@@ -45,7 +45,7 @@
 
     <div id="tab-solarmodule-content" class="tab-content">
         <h2>Solar Module</h2>
-        <form onsubmit="event.preventDefault(); calculateSolarModule();">
+        <form onsubmit="event.preventDefault(); genereate_solarmodule_result_table();">
             <label class="form-label" for="middleHours">Middle sun hours:</label>
             <input class="form-input" type="number" step="0.1" id="middleHours" name="middleHours" value="4.8">
             
