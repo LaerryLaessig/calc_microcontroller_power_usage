@@ -66,7 +66,7 @@ class TabController {
     var result = calculateSolarModule();
 
     var table = new TableBuilder();
-    table.addHeader(["mAh per day(middle)", "Wh(middle)", "mAh per day(max)", "Wh(max)"]);
+    table.addHeader(["mAh per day(middle)", "Wh per day(middle)", "mAh per day(max)", "Wh per day(max)"]);
     table.addRow([result.mAhPerDayMiddle, result.watt_hour_day_middle, result.mAhPerDayMax, result.watt_hour_day_max])
 
     document.getElementById("solar-module-result").innerHTML = table.build();
