@@ -20,7 +20,7 @@ class Solarmodule_Result {
 const sec_a_day = 86400;
 const sec_a_hour = 3600;
 
-function calculateMicrocontroller() {
+function calculate_microcontroller() {
     const microcontroller_voltage = 3.7;
 
     var work_mAh = parseFloat(document.getElementById("work_mAh").value);
@@ -40,7 +40,8 @@ function calculateMicrocontroller() {
     return new Microcontroller_Result(work_mAh_per_day, sleep_mAh_per_day, sum_mAh_per_day, watt_hour, daysRunning);
 }
 
-function calculateSolarModule() {
+
+function calculate_solarmodule() {
     var middleHours = parseFloat(document.getElementById("middleHours").value);
     var maxHours = parseFloat(document.getElementById("maxHours").value);
     var mAh = parseFloat(document.getElementById("mAh").value);

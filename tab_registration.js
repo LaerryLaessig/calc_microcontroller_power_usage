@@ -1,4 +1,4 @@
-const tabController = new TabController();
+const tabController = new Tab_Controller();
         
 const MicrocontrollerContent = document.getElementById("tab-microcontroller-content");
 const MicrocontrollerButton = document.getElementById("tab-microcontroller-button");

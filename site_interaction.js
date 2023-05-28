@@ -1,4 +1,4 @@
-class TabController {
+class Tab_Controller {
     constructor() {
       this.tabs = {};
     }
@@ -21,7 +21,7 @@ class TabController {
     }
   }
 
-  class TableBuilder {
+  class Table_Builder {
     constructor() {
       this.table = "<table>";
     }
@@ -52,9 +52,9 @@ class TabController {
 
   function genereate_microcontroller_result_table() {
 
-    var result = calculateMicrocontroller();
+    var result = calculate_microcontroller();
 
-    var table = new TableBuilder();
+    var table = new Table_Builder();
     table.addHeader(["work mAh per day", "deep sleep mAh per day", "sum mAh per day", "Wh a day", "days running"])
     table.addRow([result.work_mAh_per_day, result.sleep_mAh_per_day, result.sum_mAh_per_day, result.watt_hour, result.daysRunning])
 
@@ -63,9 +63,9 @@ class TabController {
 
   function genereate_solarmodule_result_table() {
 
-    var result = calculateSolarModule();
+    var result = calculate_solarmodule();
 
-    var table = new TableBuilder();
+    var table = new Table_Builder();
     table.addHeader(["mAh per day(middle)", "Wh per day(middle)", "mAh per day(max)", "Wh per day(max)"]);
     table.addRow([result.mAhPerDayMiddle, result.watt_hour_day_middle, result.mAhPerDayMax, result.watt_hour_day_max])
 
