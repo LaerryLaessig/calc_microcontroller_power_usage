@@ -5,8 +5,8 @@
     <title>calc microcontroller power usage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="site_interaction.js"></script>
     <script src="calculation.js"></script>
+    <script src="site_interaction.js"></script> 
 </head>
 <body>
     <div class="header">
@@ -14,11 +14,11 @@
     </div>
 
     <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'tab1')">Microcontroller</button>
-        <button class="tab-button" onclick="openTab(event, 'tab2')">Solar Module</button>
+        <button id="tab-microcontroller-button" class="tab-button active">Microcontroller</button>
+        <button id="tab-solarmodule-button" class="tab-button">Solar Module</button>
     </div>
 
-    <div id="tab1" class="tab-content" style="display: block;">
+    <div id="tab-microcontroller-content" class="tab-content" style="display: block;">
         <h2>Microcontroller</h2>
         <form onsubmit="event.preventDefault(); calculateMicrocontroller();">
 
@@ -43,7 +43,7 @@
         <div class="result" id="microcontroller-result"></div>
     </div>
 
-    <div id="tab2" class="tab-content">
+    <div id="tab-solarmodule-content" class="tab-content">
         <h2>Solar Module</h2>
         <form onsubmit="event.preventDefault(); calculateSolarModule();">
             <label class="form-label" for="middleHours">Middle sun hours:</label>
@@ -63,5 +63,16 @@
         
         <div class="result" id="solar-module-result"></div>
     </div>
+    <script>   
+        const tabController = new TabController();
+        
+        const tab1Content = document.getElementById("tab-microcontroller-content");
+        const tab1Button = document.getElementById("tab-microcontroller-button");
+        tabController.registerTab("tab-microcontroller", tab1Content, tab1Button);
+        
+        const tab2Content = document.getElementById("tab-solarmodule-content");
+        const tab2Button = document.getElementById("tab-solarmodule-button");
+        tabController.registerTab("tab-solarmodule", tab2Content, tab2Button);
+    </script>
 </body>
 </html>

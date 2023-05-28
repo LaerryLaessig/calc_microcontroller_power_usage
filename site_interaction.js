@@ -1,13 +1,24 @@
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+class TabController {
+    constructor() {
+      this.tabs = {};
     }
-    tablinks = document.getElementsByClassName("tab-button");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+  
+    registerTab(tabName, tabContentElement, tabButtonElement) {
+      this.tabs[tabName] = {
+        content: tabContentElement,
+        button: tabButtonElement
+      };
+      tabButtonElement.addEventListener('click', (evt) => this.openTab(evt, tabName));
     }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
+  
+    openTab(evt, tabName) {
+      Object.values(this.tabs).forEach((tab) => {
+        tab.content.style.display = "none";
+        tab.button.classList.remove("active");
+      });
+      this.tabs[tabName].content.style.display = "block";
+      this.tabs[tabName].button.classList.add("active");
+    }
+  }
+
+  
