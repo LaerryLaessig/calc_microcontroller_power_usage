@@ -4,8 +4,10 @@ This website allows you to easily calculate the power usage of your microcontrol
 
 ## Features
 Two tabs to switch between microcontroller and solar module calculations.
+
 ### Microcontroller Tab:
 Calculate the power usage of the microcontroller based on its work mAh, deep sleep mAh, working time, interval, and accumulator capacity.
+
 ### Solar Module Tab:
 Calculate the power scale of the solar module based on the middle sun hours, max sun hours, voltage, and capacity (mAh).
 
@@ -32,9 +34,14 @@ tab_registration.js: The JavaScript file for tab registration functionality.
 ## License
 This project is licensed under the MIT License. You can find the details in the LICENSE file.
 
+
 ## Contributing
 Contributions are welcome! If you find any issues or want to add new features, please open an issue or submit a pull request.
 
+
 ## Authors
 laerrylaessig
+
+
+## Exanmple
 https://laerrylaessig.github.io/calc_microcontroller_power_usage/
