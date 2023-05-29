@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>calc microcontroller power usage</title>
+    <title>Calculate Microcontroller Power Usage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="calculation.js"></script>
@@ -10,43 +10,46 @@
 </head>
     <body>
         <div class="header">
-            <h1>Calc microcontroller power usage</h1>
+            <h1>Calculate Microcontroller Power Usage</h1>
             Welcome! Here, you can easily calculate the power usage of your microcontroller in days and the power scale of your choice solar module.
         </div>
 
         <div class="tabs">
-            <button id="tab-microcontroller-button" class="tab-button active">Microcontroller</button>
-            <button id="tab-solarmodule-button" class="tab-button">Solar Module</button>
+            <button id="tab-microcontroller-button" class="tab-button active">Microcontroller Power</button>
+            <button id="tab-solarmodule-button" class="tab-button">Solar Module Power</button>
         </div>
         <div id="tab-microcontroller-content" class="tab-content" style="display: block;">
             <h2>Microcontroller</h2>
-            <button id="microcontroller-select-button" class="select-button">Preselection Microcontroller</button>
+            <div id="preselection-div">
+                <button id="microcontroller-select-button" class="select-button" title="Select Microcontroller">Select Microcontroller</button>
+                <span class="info-icon" title="Information">&#9432;<span class="info-tooltip">Here you can select a microcontroller to perform power usage calculation. The values for Work mAh and Deep Sleep mAh will be automatically pre-filled.</span></span>
+            </div>
             <form onsubmit="event.preventDefault(); genereate_microcontroller_result_table();">
-                <label class="form-label" for="work_mAh">Work mAh:<span class="info-icon" title="Information">
+                <label class="form-label" for="work_mAh">Power Consumption (Work mode) in mAh:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This is the power consumption of the microcontroller during active work in milliampere-hours (mAh).</span>
                 </span></label>
                 <input class="form-input" type="number" step="0.1" id="work_mAh" name="work_mAh" value="74">
 
-                <label class="form-label" for="sleep_mAh">Deep sleep mAh:<span class="info-icon" title="Information">
+                <label class="form-label" for="sleep_mAh">Power Consumption (Deep Sleep mode) in mAh:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field represents the power consumption of the microcontroller during deep sleep mode in milliampere-hours (mAh).</span>
                 </span></label>
                 <input class="form-input" type="number" step="0.01" id="sleep_mAh" name="sleep_mAh" value="0.04">
 
-                <label class="form-label" for="work_time">Working time in sec:<span class="info-icon" title="Information">
+                <label class="form-label" for="work_time">Active Work Duration in seconds:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field indicates the duration of time the microcontroller spends actively working in seconds.</span>
                 </span></label>
                 <input class="form-input" type="number" id="work_time" name="work_time" value="10">
                 
-                <label class="form-label" for="interval">Interval in sec:<span class="info-icon" title="Information">
+                <label class="form-label" for="interval">Work Cycle Interval in seconds:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field represents the interval between each work cycle of the microcontroller in seconds.</span>
                 </span></label>
                 <input class="form-input" type="number" id="interval" name="interval" value="3600">
                 
-                <label class="form-label" for="capacity">Accu capacity in mAh:<span class="info-icon" title="Information">
+                <label class="form-label" for="capacity">Accumulator Capacity in mAh:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field represents the capacity of the accumulator (battery) connected to the microcontroller in milliampere-hours (mAh).</span>
                 </span></label>
@@ -61,25 +64,25 @@
         <div id="tab-solarmodule-content" class="tab-content">
             <h2>Solar Module</h2>
             <form onsubmit="event.preventDefault(); genereate_solarmodule_result_table();">
-                <label class="form-label" for="middleHours">Middle sun hours:<span class="info-icon" title="Information">
+                <label class="form-label" for="middleHours">Average Sunlight Hours per Day:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field represents the average number of hours of sunlight available in a day.</span>
                 </span></label>
                 <input class="form-input" type="number" step="0.1" id="middleHours" name="middleHours" value="4.8">
                 
-                <label class="form-label" for="maxHours">Max sun hours:<span class="info-icon" title="Information">
+                <label class="form-label" for="maxHours">Maximum Sunlight Hours per Day:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field represents the maximum number of hours of sunlight available in a day.</span>
                 </span></label>
                 <input class="form-input" type="number" step="0.1" id="maxHours" name="maxHours" value="8">
                 
-                <label class="form-label" for="voltage">Voltage:<span class="info-icon" title="Information">
+                <label class="form-label" for="voltage">Solar Module Voltage (V):<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field represents the voltage output of the solar module.</span>
                 </span></label>
                 <input class="form-input" type="number" step="0.1" id="voltage" name="voltage" value="6">
 
-                <label class="form-label" for="mAh">capacity (mAh)<span class="info-icon" title="Information">
+                <label class="form-label" for="mAh">Battery Capacity in mAh:<span class="info-icon" title="Information">
                     &#9432;
                     <span class="info-tooltip">This field represents the capacity of the solar module's battery in milliampere-hours (mAh)</span>
                 </span></label>

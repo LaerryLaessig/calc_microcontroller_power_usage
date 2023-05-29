@@ -144,6 +144,10 @@ table tr:hover {
 .form-label:hover .info-tooltip {
     display: block;
 }
+
+#preselection-div:hover .info-tooltip {
+    display: block;
+}
 .modal-content h2 {
     margin-bottom: 10px;
   }
