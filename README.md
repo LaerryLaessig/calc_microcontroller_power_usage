@@ -24,11 +24,16 @@ The calculated results will be displayed in the corresponding result section bel
 Clone the repository or download the HTML, CSS, and JavaScript files.
 Place the files in a web server directory or simply open the HTML file in a web browser.
 File Structure
-index.html: The main HTML file containing the structure and content of the website.
-style.css: The CSS file for styling the website.
-calculation.js: The JavaScript file containing the calculations for microcontroller and solar module power usage.
-site_interaction.js: The JavaScript file handling user interactions on the website.
-tab_registration.js: The JavaScript file for tab registration functionality.
+### index.html: 
+The main HTML file containing the structure and content of the website.
+### style.css: 
+The CSS file for styling the website.
+### calculation.js:
+The JavaScript file containing the calculations for microcontroller and solar module power usage.
+### site_interaction.js:
+The JavaScript file handling user interactions on the website.
+### tab_registration.js: 
+The JavaScript file for tab registration functionality.
 
 
 ## License
