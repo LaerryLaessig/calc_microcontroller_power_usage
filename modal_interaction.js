@@ -55,6 +55,26 @@ var microcontrollerData = [
         deep_sleep_mAh: 100
     },
     {
+        microcontroller: "Raspi B+ Wifi",
+        work_mAh: 220,
+        deep_sleep_mAh: 220
+    },
+    {
+        microcontroller: "Raspi B+ no Wifi",
+        work_mAh: 180,
+        deep_sleep_mAh: 180
+    },
+    {
+        microcontroller: "Raspi A+ Wifi",
+        work_mAh: 160,
+        deep_sleep_mAh: 160
+    },
+    {
+        microcontroller: "Raspi A+ no Wifi",
+        work_mAh: 80,
+        deep_sleep_mAh: 80
+    },
+    {
         microcontroller: "Raspi Pico",
         work_mAh: 20,
         deep_sleep_mAh: 1.5
@@ -83,7 +103,7 @@ var microcontrollerData = [
 generateMicrocontrollerOption();
 var selectButton = document.getElementById('select-button');
 selectButton.addEventListener('click', function (event) {
-event.preventDefault(); // Verhindert das Standardverhalten des Formulars
+event.preventDefault(); // Block standard site interaction of the form
 
 var microcontrollerSelect = document.getElementById('microcontroller-select');
 var selectedMicrocontroller = microcontrollerSelect.value;
