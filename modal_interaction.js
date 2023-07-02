@@ -80,7 +80,7 @@ var microcontrollerData = [
         deep_sleep_mAh: 0.02
     }
 ];
-
+generateMicrocontrollerOption();
 var selectButton = document.getElementById('select-button');
 selectButton.addEventListener('click', function (event) {
 event.preventDefault(); // Verhindert das Standardverhalten des Formulars
@@ -102,7 +102,6 @@ closeModal();
 // Open the microcontroller modal on button click
 var microcontrollerSelectButton = document.getElementById('microcontroller-select-button');
 microcontrollerSelectButton.addEventListener('click', function () {
-    generateMicrocontrollerOption();
     var modal = document.getElementById('microcontroller-modal');
     modal.style.display = 'block';
 });
