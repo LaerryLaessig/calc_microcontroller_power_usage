@@ -5,6 +5,26 @@ var microcontrollerData = [
         deep_sleep_mAh: 0.03
     },
     {
+        microcontroller: "Atmega328P",
+        work_mAh: 30,
+        deep_sleep_mAh: 0.02
+    },
+    {
+        microcontroller: "ATtiny85",
+        work_mAh: 2,
+        deep_sleep_mAh: 0.005
+    },
+    {
+        microcontroller: "ESP8266",
+        work_mAh: 74,
+        deep_sleep_mAh: 0.04
+    },
+    {
+        microcontroller: "ESP32",
+        work_mAh: 110,
+        deep_sleep_mAh: 0.04
+    },
+    {
         microcontroller: "Raspi 2B Wifi",
         work_mAh: 240,
         deep_sleep_mAh: 240
@@ -80,23 +100,8 @@ var microcontrollerData = [
         deep_sleep_mAh: 1.5
     },
     {
-        microcontroller: "ESP8266",
-        work_mAh: 74,
-        deep_sleep_mAh: 0.04
-    },
-    {
-        microcontroller: "ESP32",
-        work_mAh: 110,
-        deep_sleep_mAh: 0.04
-    },
-    {
         microcontroller: "STM32F103C8",
         work_mAh: 40,
-        deep_sleep_mAh: 0.02
-    },
-    {
-        microcontroller: "Atmega328P",
-        work_mAh: 30,
         deep_sleep_mAh: 0.02
     }
 ];
